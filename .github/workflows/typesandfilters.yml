@@ -5,7 +5,9 @@ on:
     branches-ignore:
       - test
     paths:
-      - '*.*'
+      - 'src/**'
+      - 'docs/*.md'
+      - '*.yml'
 
 jobs:
   build:
