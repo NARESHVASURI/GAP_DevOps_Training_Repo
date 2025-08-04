@@ -1,4 +1,4 @@
-name: ManualApI Workflow
+name: ManualAPI Workflow
 on: workflow_dispatch
 jobs:
   build:
