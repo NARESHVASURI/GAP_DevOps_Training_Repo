@@ -8,8 +8,6 @@ on:
       - develop
     paths-ignore:
       - '*.docs'
-    tags-ignore:
-      - 'v1.*'
 
 jobs:
   build:
