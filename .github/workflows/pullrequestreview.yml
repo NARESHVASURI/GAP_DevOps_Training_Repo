@@ -1,5 +1,7 @@
 name: Pullrequest Review Workflow
-on: pull_request_review
+on: 
+  pull_request_review:
+    types: [submitted] 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,6 +16,7 @@ jobs:
       - name: print test-edge
         run: echo 'test edge'
   deploy:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - name: print deploy
