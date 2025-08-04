@@ -3,12 +3,13 @@ name: ActivityTypes_EventFilters Workflow
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review, closed]
-    branches-ignore:
-      - test
-    paths:
-      - 'src/**'
-      - 'docs/*.md'
-      - '*.yml'
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '*.docs'
+    tags-ignore:
+      - 'v1.*'
 
 jobs:
   build:
