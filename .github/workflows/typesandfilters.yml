@@ -1,5 +1,6 @@
 name: ActivityTypes_EventFilters Workflow
-on: 
+
+on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review, closed]
     branches-ignore:
@@ -15,6 +16,7 @@ jobs:
     steps:
       - name: print build
         run: echo 'build'
+
   test:
     runs-on: windows-latest
     steps:
@@ -22,6 +24,7 @@ jobs:
         run: echo 'test chrome'
       - name: print test-edge
         run: echo 'test edge'
+
   deploy:
     runs-on: ubuntu-latest
     steps:
