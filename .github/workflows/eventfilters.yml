@@ -1,0 +1,31 @@
+name: EventFilters Workflow
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '*.docs'
+    tags-ignore:
+      - 'v1.*'
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print build
+        run: echo 'build'
+
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: print test-chrome
+        run: echo 'test chrome'
+      - name: print test-edge
+        run: echo 'test edge'
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print deploy
+        run: echo 'deploy'
