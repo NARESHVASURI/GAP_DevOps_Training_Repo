@@ -4,9 +4,9 @@ on:
     branches-ignore:
       - test
     paths:
-      - '*.*'
+      - '**'
     tags:
-      - '*.*'
+      - '*'
       
 jobs:
   build:
