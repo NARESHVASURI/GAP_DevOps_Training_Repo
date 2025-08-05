@@ -1,0 +1,31 @@
+name: ActivityTypes_EventFilters Workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, closed]
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - '*.docs'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print build
+        run: echo 'build'
+
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: print test-chrome
+        run: echo 'test chrome'
+      - name: print test-edge
+        run: echo 'test edge'
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print deploy
+        run: echo 'deploy'
