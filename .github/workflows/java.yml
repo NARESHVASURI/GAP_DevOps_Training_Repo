@@ -1,4 +1,4 @@
-name : Java Setup 
+name : Java Setup Workflow
 
 on: workflow_dispatch
 jobs:
