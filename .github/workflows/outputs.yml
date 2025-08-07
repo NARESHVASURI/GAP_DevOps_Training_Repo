@@ -1,9 +1,17 @@
 name: Outputs
 on: workflow_dispatch
 jobs:
- outputs:
+ gen-msg:
    runs-on: ubuntu-latest
-   outputs: ${{steps.set-message.outputs.greeting}}
+   outputs: 
+     message: ${{steps.set-message.outputs.greeting}}
    steps:
      - id: set-message
-       run: echo 'geeting=Hello world' >> $GITHUB_OUTPUT
+       run: |
+        echo 'greeting= Hello world' >> $GITHUB_OUTPUT
+        echo 'handlift=namasthe' >> $GITHUB_OUTPUT
+ display-msg:
+   needs: gen-msg
+   runs-on: ubuntu-latest
+   steps:
+     - run: echo ${{needs.gen-msg.outputs.greeting}}  
