@@ -1,0 +1,55 @@
+name: Multi-Language CI
+
+on: push
+env:
+  GLOBAL_ENV_VAR: 'global_value'
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      java-version: ${{ steps.set-java.outputs.version }}
+      node-version: ${{ steps.set-node.outputs.version }}
+      python-version: ${{ steps.set-python.outputs.version }}
+    steps:
+      - name: Set up Java
+        id: set-java
+        run: echo "version=17" >> $GITHUB_OUTPUT
+
+      - name: Set up Node.js
+        id: set-node
+        run: echo "version=22" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        id: set-python
+        run: echo "version=3.13" >> $GITHUB_OUTPUT
+
+  build:
+    needs: setup
+    strategy:
+      matrix:
+        language: [java, node, python]
+    runs-on: ubuntu-latest
+    env:
+      BUILD_ENV_VAR: 'build_value'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up ${{ matrix.language }}
+        run: |
+          if [ "${{ matrix.language }}" == "java" ]; then
+            echo "Setting up Java ${{ needs.setup.outputs.java-version }}"
+          elif [ "${{ matrix.language }}" == "node" ]; then
+            echo "Setting up Node.js ${{ needs.setup.outputs.node-version }}"
+          elif [ "${{ matrix.language }}" == "python" ]; then
+            echo "Setting up Python ${{ needs.setup.outputs.python-version }}"
+          fi
+
+      - name: Use secret
+        run: echo "Using secret: ${{ secrets.MY_SECRET }}"
+
+      - name: Print environment variables
+        run: |
+          echo "Global env: ${{ env.GLOBAL_ENV_VAR }}"
+          echo "Build env: ${{ env.BUILD_ENV_VAR }}"
