@@ -1,6 +1,7 @@
 name: Multi-Language CI
 
 on: push
+
 env:
   GLOBAL_ENV_VAR: 'global_value'
 
@@ -47,7 +48,7 @@ jobs:
           fi
 
       - name: Use secret
-        run: echo "Using secret: ${{ secrets.MY_SECRET }}"
+        run: echo "Using secret ${{ secrets.MY_SECRET }}"
 
       - name: Print environment variables
         run: |
