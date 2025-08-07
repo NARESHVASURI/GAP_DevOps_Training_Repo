@@ -1,4 +1,4 @@
-name: Multi-Language CI
+name: GitHubContexts Language CI
 
 on: push
 
