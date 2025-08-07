@@ -21,8 +21,3 @@ jobs:
           echo 'Ref ${{github.ref}}'
           echo 'trigger event ${{github.event_name}}'
           echo 'Repository token ${{github.token}}'
-      - name: examples
-        if: github.ref == 'ref/heads/main'
-        run : echo 'deploy'
-      - if: github.event_name == 'pull_request'
-        run: echo 'trigger the workflow'
