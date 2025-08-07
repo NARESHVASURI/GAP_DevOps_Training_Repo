@@ -1,4 +1,4 @@
-name: GitHubContexts Language CI
+name: GitHubContexts Usecase
 
 on: push
 
