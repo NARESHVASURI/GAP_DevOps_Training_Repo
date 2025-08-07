@@ -14,4 +14,4 @@ jobs:
    needs: gen-msg
    runs-on: ubuntu-latest
    steps:
-     - run: echo ${{needs.gen-msg.outputs.greeting}}  
+     - run: echo ${{needs.gen-msg.outputs.message}}  
