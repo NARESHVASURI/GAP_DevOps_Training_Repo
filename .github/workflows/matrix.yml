@@ -4,6 +4,8 @@ jobs:
   matrix_jobs:
     runs-on: ${{matrix.os}}
     strategy:
+      fail-fast: false
+      max-parallel: 2
       matrix:
         os:
          - ubuntu-latest
