@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print All the Github information
-        run: 
+        run: |
           echo 'Repository details ${{github.repository}}'
           echo 'Repository id ${{github.repository_id}}'
           echo 'Repository owner ${{github.repository_owner}}'
