@@ -1,0 +1,22 @@
+name: Self hosted Workflow
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: print build
+        run: echo 'build'
+  test:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: print test-chrome
+        run: echo 'test chrome'
+      - name: print test-edge
+        run: echo 'test edge'
+  deploy:
+    needs: [build, test]
+    runs-on: self-hosted
+    steps:
+      - name: print deploy
+        run: echo 'deploy'
